@@ -1,4 +1,7 @@
 ﻿using DIP.DependencyInversionPrinciple.CommonTypes;
+using System;
+using System.Linq;
+using System.Reflection;
 
 namespace DIP.DependencyInversionPrinciple.Good
 {
@@ -12,27 +15,20 @@ namespace DIP.DependencyInversionPrinciple.Good
             {
                 notification.SendNotification(message);
             }
-
-            notification.SendNotification(message);
         }
 
-        private bool TryGetNotificationStrategy(EnumMessageType type, ref Notification notification)
+        private bool TryGetNotificationStrategy(EnumMessageType messageType, ref Notification notification)
         {
-            switch (type)
-            {
-                case EnumMessageType.Email:
-                    notification = new Notification(new Email());
-                    break;
-                case EnumMessageType.Whatsapp:
-                    notification = new Notification(new Whatsapp());
-                    break;
-                case EnumMessageType.Sms:
-                    notification = new Notification(new Sms());
-                    break;
-                default:
-                    notification = new Notification(new Email());
-                    break;
-            }
+            IMessageType notifType = null;
+
+            var resolvedType = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(t => typeof(IMessageType).IsAssignableFrom(t))
+                .FirstOrDefault(tp => tp.AssemblyQualifiedName.Contains(messageType.ToString()));
+
+            notifType = Activator.CreateInstance(resolvedType) as IMessageType;
+
+            notification = new Notification(notifType);
 
             return notification != null;
         }

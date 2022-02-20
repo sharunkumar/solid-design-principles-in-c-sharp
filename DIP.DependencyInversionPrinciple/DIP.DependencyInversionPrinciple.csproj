@@ -42,12 +42,12 @@
     <Compile Include="Bad\Notify.cs" />
     <Compile Include="Bad\Sms.cs" />
     <Compile Include="Bad\Whatsapp.cs" />
-    <Compile Include="Good\Email.cs" />
-    <Compile Include="Good\IMessageType.cs" />
+    <Compile Include="Good\Types\Email.cs" />
+    <Compile Include="Good\Types\IMessageType.cs" />
     <Compile Include="Good\Notification.cs" />
     <Compile Include="Good\Notify.cs" />
-    <Compile Include="Good\Sms.cs" />
-    <Compile Include="Good\Whatsapp.cs" />
+    <Compile Include="Good\Types\Sms.cs" />
+    <Compile Include="Good\Types\Whatsapp.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
