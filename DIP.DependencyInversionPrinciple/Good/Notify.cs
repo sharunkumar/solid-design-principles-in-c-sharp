@@ -5,9 +5,9 @@ using System.Reflection;
 
 namespace DIP.DependencyInversionPrinciple.Good
 {
-    public class Notify
+    public static class Notify
     {
-        public void NotifyMessage(string message, EnumMessageType type)
+        public static void NotifyMessage(string message, EnumMessageType type)
         {
             Notification notification = null;
 
@@ -17,7 +17,7 @@ namespace DIP.DependencyInversionPrinciple.Good
             }
         }
 
-        private bool TryGetNotificationStrategy(EnumMessageType messageType, ref Notification notification)
+        private static bool TryGetNotificationStrategy(EnumMessageType messageType, ref Notification notification)
         {
             IMessageType notifType = null;
 
@@ -26,9 +26,12 @@ namespace DIP.DependencyInversionPrinciple.Good
                 .Where(t => typeof(IMessageType).IsAssignableFrom(t))
                 .FirstOrDefault(tp => tp.AssemblyQualifiedName.Contains(messageType.ToString()));
 
-            notifType = Activator.CreateInstance(resolvedType) as IMessageType;
+            if(resolvedType != null)
+            {
+                notifType = Activator.CreateInstance(resolvedType) as IMessageType;
 
-            notification = new Notification(notifType);
+                notification = new Notification(notifType);
+            }
 
             return notification != null;
         }
