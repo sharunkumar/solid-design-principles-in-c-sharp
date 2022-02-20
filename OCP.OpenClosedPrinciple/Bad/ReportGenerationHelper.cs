@@ -10,24 +10,24 @@ namespace OCP.OpenClosedPrinciple.Bad
 
             if (report.ReportType == "EXCEL")
             {
-                // Lógica para gerar arquivo Excel
+                // Logic to generate Excel file
                 // ....  
                 generatedPath = @"%appdata%\Info\Report.xls";
             }
             else if (report.ReportType == "PDF")
             {
-                // Lógica para gerar arquivo PDF
+                // Logic to generate PDF file
                 // ....  
                 generatedPath = @"%appdata%\Info\Report.pdf";
             }
             else if (report.ReportType == "WORD")
             {
-                // Lógica para gerar arquivo WORD
+                // Logic to generate WORD file
                 // ....  
                 generatedPath = @"%appdata%\Info\Report.docx";
             }
 
-            // E se eu quiser adicionar a geração em XML ???
+            // And if I want to add the generation in XML ???
 
             else if (report.ReportType == "XML")
             {

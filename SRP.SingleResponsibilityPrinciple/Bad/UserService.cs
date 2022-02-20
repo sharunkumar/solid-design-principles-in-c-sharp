@@ -9,7 +9,7 @@ namespace SRP.SingleResponsibilityPrinciple.Bad
         public User RegisterUser(string nome, string email)
         {
             if (!ValidateEmail(email))
-                throw new ValidationException($"{nameof(email)} não é um e-mail");
+                throw new ValidationException($"{nameof(email)} is not a valid email");
 
             DbContext dbContext = new DbContext();
 

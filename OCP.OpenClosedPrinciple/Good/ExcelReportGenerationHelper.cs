@@ -8,7 +8,7 @@ namespace OCP.OpenClosedPrinciple.Good
         {
             string generatedPath = null;
 
-            // Lógica para gerar um relatório EXCEL
+            // Logic to generate Excel file
             // ....  
             // ....  
             generatedPath = @"%appdata%\Info\Report.xls";
