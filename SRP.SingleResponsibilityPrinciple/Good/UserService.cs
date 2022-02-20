@@ -5,8 +5,8 @@ namespace SRP.SingleResponsibilityPrinciple.Good
 {
     public class UserService
     {
-        private MailService _mailServiceClient;
-        private DbContext _dbContext;
+        private readonly MailService _mailServiceClient;
+        private readonly DbContext _dbContext;
 
         public UserService(MailService mailClient, DbContext dbContext)
         {

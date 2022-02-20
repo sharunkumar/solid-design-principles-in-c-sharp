@@ -5,7 +5,7 @@ namespace SRP.SingleResponsibilityPrinciple.Good
 {
     public class MailService
     {
-        private MailClient _client;
+        private readonly MailClient _client;
 
         public MailService(MailClient client)
         {
