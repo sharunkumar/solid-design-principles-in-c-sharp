@@ -1,7 +1,8 @@
-﻿using LSP.LiskovSubstitutionPrinciple.Bad;
+﻿using LSP.LiskovSubstitutionPrinciple.AccountTypes;
+using LSP.LiskovSubstitutionPrinciple.Bad;
 using System.Collections.Generic;
 
-namespace LSP.LiskovSubstitutionPrinciple.Common
+namespace LSP.LiskovSubstitutionPrinciple.Good
 {
     class AccountAccessMannager
     {
@@ -10,7 +11,7 @@ namespace LSP.LiskovSubstitutionPrinciple.Common
 
         }
 
-        public void GetMentorFromAccounts(List<AccountAccess> accounts)
+        public void GetMentorFromAccounts(List<TopPaidAccountAccess> accounts)
         {
             foreach (var account in accounts)
             {
